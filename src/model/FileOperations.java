@@ -108,7 +108,8 @@ public class FileOperations {
       for(InvoiceHeader inv : invList)
       {
           int invNum = inv.getInv_num();
-          String date = inv.getDate().toString();
+          //String date = inv.getDate().toString();   // This to print out Date in System Format
+          String date = new SimpleDateFormat("dd-MM-YYYY").format(inv.getDate()); // this to print out date in required format
           String custName = inv.getCust_name();
           System.out.println("\n Invice No. " + invNum + "\n { \n Invoice Date: "
           + date + "\n Customer Name: " + custName);

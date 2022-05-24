@@ -1,8 +1,13 @@
 package view;
 
 import controllers.Action;
+import controllers.TableSelection;
 import java.util.ArrayList;
+import javax.swing.JLabel;
+import javax.swing.JTable;
 import model.InvoiceHeader;
+import model.InvoiceItemsTable;
+import model.InvoiceListTable;
 
 public class SigFrame extends javax.swing.JFrame {
         // Creates new form SigFrame   
@@ -22,6 +27,7 @@ public class SigFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         invoiceTable = new javax.swing.JTable();
+        invoiceTable.getSelectionModel().addListSelectionListener(select);
         newInvoice = new javax.swing.JButton();
         newInvoice.addActionListener(action);
         deleteInvoice = new javax.swing.JButton();
@@ -55,6 +61,7 @@ public class SigFrame extends javax.swing.JFrame {
         exitItem.addActionListener(action);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("SIG - Sales Invoice Generator");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setText("Invoice List : ");
@@ -198,23 +205,17 @@ public class SigFrame extends javax.swing.JFrame {
                                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(10, 10, 10)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel9)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(invoiceTotal))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                                .addComponent(jLabel7)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(customerName))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                                .addComponent(jLabel5)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(invoiceDate))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                                .addComponent(jLabel3)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(invoiceNumber)))))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel9)
+                                            .addComponent(jLabel7)
+                                            .addComponent(jLabel5)
+                                            .addComponent(jLabel3))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(invoiceNumber)
+                                            .addComponent(invoiceDate)
+                                            .addComponent(customerName)
+                                            .addComponent(invoiceTotal))))
                                 .addGap(0, 207, Short.MAX_VALUE))))))
         );
         layout.setVerticalGroup(
@@ -348,6 +349,14 @@ public class SigFrame extends javax.swing.JFrame {
     
   // Define an Action Listener to excute actions on the form components
   private Action action = new Action(this);
+  
+  // Define a Selection Listener to excute actions when select a row in Invoice List Table
+  private TableSelection select = new TableSelection(this);
+  
+  // Define InvoiceListTable Model to use in bulding the table
+  private InvoiceListTable invTableModel;
+   
+  
 
   // getter method for Inv_list  arraylist
   public ArrayList<InvoiceHeader> getInv_list() 
@@ -360,8 +369,57 @@ public class SigFrame extends javax.swing.JFrame {
     {
         this.inv_list = inv_list;
     }
+
+  // getter method for invTableModel 
+  public InvoiceListTable getInvTableModel() 
+   {
+        return invTableModel;
+   }
+
+  // Setter method for invTableModel 
+  public void setInvTableModel(InvoiceListTable invTableModel) 
+   {
+        this.invTableModel = invTableModel;
+   }
+
+  
+    
+  // below is getter methods for frame components in which data will be displayed
+  
+  public JLabel getCustomerName() {
+        return customerName;
+    }
+
+  public JLabel getInvoiceNumber() {
+        return invoiceNumber;
+    }
+
+  public JTable getInvoiceTable() {
+        return invoiceTable;
+    }
+
+  public JLabel getInvoiceTotal() {
+        return invoiceTotal;
+    }
+
+  public JTable getItemsTable() {
+        return itemsTable;
+    }
+
+  public JLabel getLastModifiedDate() {
+        return lastModifiedDate;
+    }
+
+    public JLabel getInvoiceDate() {
+        return invoiceDate;
+    }
+
+  public Action getAction() {
+        return action;
+    }
   
  
+  
 
     
 }  // end of Class SigFrame

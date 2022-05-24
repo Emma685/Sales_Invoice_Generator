@@ -5,9 +5,11 @@
         <group>
             <file>file:/C:/Users/Blue/Desktop/Projects/Sales_Invoice_Generator/src/controllers/Action.java</file>
             <file>file:/C:/Users/Blue/Desktop/Projects/Sales_Invoice_Generator/src/model/InvoiceItemsTable.java</file>
+            <file>file:/C:/Users/Blue/Desktop/Projects/Sales_Invoice_Generator/src/controllers/TableSelection.java</file>
             <file>file:/C:/Users/Blue/Desktop/Projects/Sales_Invoice_Generator/src/model/InvoiceLine.java</file>
             <file>file:/C:/Users/Blue/Desktop/Projects/Sales_Invoice_Generator/src/view/SigFrame.java</file>
-            <file>file:/C:/Users/Blue/Desktop/Projects/Sales_Invoice_Generator/src/model/FileOperations.java</file>
+            <file>file:/C:/Users/Blue/Desktop/Projects/Sales_Invoice_Generator/src/view/NewInvoiceWindow.java</file>
+            <file>file:/C:/Users/Blue/Desktop/Projects/Sales_Invoice_Generator/src/view/NewItemWindow.java</file>
             <file>file:/C:/Users/Blue/Desktop/Projects/Sales_Invoice_Generator/src/model/InvoiceListTable.java</file>
             <file>file:/C:/Users/Blue/Desktop/Projects/Sales_Invoice_Generator/src/model/InvoiceHeader.java</file>
         </group>
